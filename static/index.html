@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>WebRTC demo</title>
+  <link rel="stylesheet" type="text/css" href="app.css" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:800&display=swap" rel="stylesheet">
+  <script src="socket.io.js"></script>
+  <script type="text/javascript" src="easyrtc.js"></script>
+  <script type="text/javascript" src="jquery-3.2.1.js"></script>
+  <script type="text/javascript" src="demo_audio_video_simple.js"></script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="confNameContainer">
+      <input type="text" id="userName" placeholder="Enter Name" autofocus />
+      <button id="confNameBtn">Submit</button>
+    </div>
+    <div id="main">
+      <header>Corporation System Using WebRTC</header>
+      <div id="button-container">
+        <div id="all-button-container">
+            <button id="disconnectbtn" class="">Disconnect all</button>
+        </div>
+      </div>
+
+      <div id="displayDiv"></div>
+      <div id="main-container">
+        <div id="rear-video">
+          <p id="iam"></p>
+          <div class="video-container">
+            <video autoplay="autoplay" muted="muted" texture  id="selfVideo"></video>
+          </div>
+        </div> 
+
+        <div id="far-video1">
+          <div id="otherClients1"></div>
+          <p id="name-client1"></p>
+          <div class="video-container">
+          <img id="captured_img1" src="">
+          <video autoplay="autoplay" texture id="callerVideo1"></video>
+          </div>
+        </div>
+        <div id="far-video2">
+            <div id="otherClients2"></div>
+            <p id="name-client2"></p>
+            <div class="video-container">
+            <img id="captured_img2" src="">
+            <video autoplay="autoplay" texture id="callerVideo2"></video>
+            </div>
+        </div>
+
+        <div id="far-video3">
+          <div id="otherClients3"></div>
+          <p id="name-client3"></p>
+          <div class="video-container">
+            <img id="captured_img3" src="">
+          <video autoplay="autoplay" texture id="callerVideo3"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+
+</html>
