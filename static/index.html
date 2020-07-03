@@ -19,10 +19,13 @@
       <button id="confNameBtn">Submit</button>
     </div>
     <div id="main">
-      <header>Corporation System Using WebRTC</header>
+      <header>Conference with EasyRTC</header>
       <div id="button-container">
         <div id="all-button-container">
+          <span id="connect-buttons"></span>
+          <span id="disconnect-buttons">     
             <button id="disconnectbtn" class="">Disconnect all</button>
+          </span>
         </div>
       </div>
 
@@ -31,7 +34,7 @@
         <div id="rear-video">
           <p id="iam"></p>
           <div class="video-container">
-            <video autoplay="autoplay" muted="muted" texture  id="selfVideo"></video>
+            <video autoplay="autoplay" muted="muted" id="selfVideo"></video>
           </div>
         </div> 
 
@@ -40,7 +43,7 @@
           <p id="name-client1"></p>
           <div class="video-container">
           <img id="captured_img1" src="">
-          <video autoplay="autoplay" texture id="callerVideo1"></video>
+          <video autoplay="autoplay" id="callerVideo1"></video>
           </div>
         </div>
         <div id="far-video2">
@@ -48,7 +51,7 @@
             <p id="name-client2"></p>
             <div class="video-container">
             <img id="captured_img2" src="">
-            <video autoplay="autoplay" texture id="callerVideo2"></video>
+            <video autoplay="autoplay" id="callerVideo2"></video>
             </div>
         </div>
 
@@ -57,7 +60,7 @@
           <p id="name-client3"></p>
           <div class="video-container">
             <img id="captured_img3" src="">
-          <video autoplay="autoplay" texture id="callerVideo3"></video>
+          <video autoplay="autoplay" id="callerVideo3"></video>
           </div>
         </div>
       </div>
