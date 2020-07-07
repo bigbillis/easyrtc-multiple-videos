@@ -72,7 +72,6 @@ $(document).ready(function () {
             var currentConnections = easyrtc.getConnectionCount();
             var video;
             //we check which slots are occupied, so we can position the videos in order, and hide the non occupied videos we Start at 0 and just ignore index 0
-            //   var occupiedSlot = ['', false, false, false];
             var callerName = roomParticipants[callerEasyrtcid].username;
 
             //check if participant exists and reject him if exists
@@ -86,9 +85,9 @@ $(document).ready(function () {
                 callParticipants[currentConnections] = callerEasyrtcid;
                 video = document.getElementById('callerVideo' + currentConnections);
                 $("#name-client" + currentConnections).text(callerName);
-                console.log('found empty slot');
+                easyrtc.setVideoObjectSrc(video, stream);
             }
-
+            //position the video tags depending on the number of video connections 
             if (currentConnections == 1) {
                 $(".video-container").css({ 'width': '30vw' });
                 $("#rear-video").css({ left: "10vw" });
@@ -107,7 +106,6 @@ $(document).ready(function () {
                 $("#far-video2").css({ left: "51vw", visibility: 'visible' });
                 $("#far-video3").css({ left: "76vw", visibility: 'visible' });
             }
-            easyrtc.setVideoObjectSrc(video, stream);
         });
 
         //this function is called every time someone exits the video-call. 
@@ -138,8 +136,8 @@ $(document).ready(function () {
                 $("#far-video1").css({ visibility: 'visible' });
                 $("#far-video2").css({ visibility: 'hidden' });
                 $("#far-video3").css({ visibility: 'hidden' });
-                if (!isEmptySlot(1)) { console.log('here'); }
-                else if (!isEmptySlot(2)) {
+                //1 user left, slots 1 and 3 are empty, put user in slot 2 to slot 1
+                if (!isEmptySlot(2)) {
                     console.log('here');
                     document.getElementById("callerVideo1").srcObject = document.getElementById("callerVideo2").srcObject
                     $("#name-client1").text(easyrtc.idToName(callParticipants[2]));
@@ -147,6 +145,7 @@ $(document).ready(function () {
                     callParticipants[2] = "";
                     easyrtc.setVideoObjectSrc(document.getElementById("callerVideo2"), "");
                 }
+                //slots 1 and 2 are empty, put user in slot 3 to slot 1
                 else if (!isEmptySlot(3)) {
                     console.log('here');
                     document.getElementById("callerVideo1").srcObject = document.getElementById("callerVideo3").srcObject
@@ -165,6 +164,7 @@ $(document).ready(function () {
                 $("#far-video1").css({ left: "38vw" });
                 $("#far-video2").css({ left: "70vw" });
                 $("#far-video3").css({ visibility: 'hidden' });
+                // if last slot is occupied (1st or 2nd slot is empty in that case), move the user to an empty slot
                 if (isEmptySlot(1)) {
                     console.log('empty is one ');
                     document.getElementById("callerVideo1").srcObject = document.getElementById("callerVideo3").srcObject
